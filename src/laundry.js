@@ -76,12 +76,6 @@ function getMaxPairs(noOfWashes, cleanPile, dirtyPile) {
   return numberOfCleanPairs;
 }
 
-const numberMachineCanWash = 0;
 
-const cleanPile = [10, 11, 12, 11, 10, 10, 13, 11, 12, 10, 13, 14, 11, 10, 12];
-
-const dirtyPile = [10, 10, 11, 12, 13, 10, 14, 14, 14, 12, 12, 10, 10, 11, 11];
-
-console.log(getMaxPairs(numberMachineCanWash, cleanPile, dirtyPile));
 
 module.exports = getMaxPairs;
