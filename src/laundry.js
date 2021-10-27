@@ -25,13 +25,12 @@ function getMaxPairs(noOfWashes, cleanPile, dirtyPile) {
   for (let pile of cleanPile) {
     if (cleanPileObj[pile] === 0) delete cleanPileObj[pile];
   }
-  console.log(cleanPileObj);
   for (let pile of dirtyPile) {
     if (dirtyPileObj[pile]) {
       dirtyPileObj[pile]++;
     } else dirtyPileObj[pile] = 1;
   }
-  console.log(numberOfCleanPairs);
+
   let washed = false;
   var timesWashed = 0;
   for (let timesToWash = 0; timesToWash < noOfWashes; timesToWash++) {
@@ -58,18 +57,13 @@ function getMaxPairs(noOfWashes, cleanPile, dirtyPile) {
       timesWashed = washed ? timesToWash + 1 : timesToWash;
       break;
     }
-    console.log('RRR:' + timesToWash);
-    console.log('RRRTT:' + numberOfCleanPairs);
   }
-  console.log('RRRSSS:' + timesWashed + ' numClean: ' + numberOfCleanPairs);
+
   for (let dirtySocks in dirtyPileObj) {
     while (dirtyPileObj[dirtySocks] >= 2 && noOfWashes - timesWashed >= 2) {
       dirtyPileObj[dirtySocks] -= 2;
-      console.log('DDD:' + dirtyPileObj[dirtySocks]);
-      console.log('TTT:' + timesWashed);
       numberOfCleanPairs++;
       timesWashed += 2;
-      console.log('NNN:' + numberOfCleanPairs);
     }
   }
 
