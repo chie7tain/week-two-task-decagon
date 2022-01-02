@@ -90,10 +90,12 @@ const input = [
 
 function classifier(input) {
   names = [...input];
+
   names = names.map((member) => {
     member.age = new Date().getFullYear() - new Date(member.dob).getFullYear();
     return member;
   });
+  console.log(names);
 
   names.sort((a, b) => a.age - b.age);
 
@@ -103,27 +105,7 @@ function classifier(input) {
   let ageGroup = [];
 
   let ageLimit = 0;
-  console.log(names);
-  // for (let person of names) {
-  //   if (ageLimit === 0) {
-  //     ageLimit = person.age;
-  //   }
-  //   if (person.age - ageLimit <= 5) {
-  //     if (ageGroup.length < 3) {
-  //       ageGroup.push(person);
-  //     } else {
-  //       groupedMembers.push(ageGroup);
-  //       ageGroup = [];
-  //       ageGroup.push(person);
-  //       ageLimit = person.age;
-  //     }
-  //   } else {
-  //     groupedMembers.push(ageGroup);
-  //     ageGroup = [];
-  //     ageGroup.push(person);
-  //     ageLimit = person.age;
-  //   }
-  // }
+
   for (let i = 0; i < names.length; i++) {
     let person = names[i];
     if (ageLimit === 0) {
@@ -148,11 +130,11 @@ function classifier(input) {
 
   if (ageGroup.length) groupedMembers.push(ageGroup);
   let result = {};
+  console.log(groupedMember[0]);
 
   for (let i = 0; i < groupedMembers.length; i++) {
     let str = 'group' + (i + 1);
     let membersAges = groupedMembers[i].map((el) => el.age);
-    membersAges;
     result[str] = {
       members: groupedMembers[i],
       oldest: Math.max(...membersAges),
@@ -165,5 +147,6 @@ function classifier(input) {
   result.noOfGroups = groupedMembers.length;
   return result;
 }
-classifier(input);
+
+// classifier(exampleOutput);
 module.exports = classifier;

@@ -6,29 +6,39 @@
  */
 
 function getMaxPairs(noOfWashes, cleanPile, dirtyPile) {
+  // first create objects to hold the various piles of socks
+
   let cleanPileObj = {};
   let dirtyPileObj = {};
   let numberOfCleanPairs = 0;
 
-  for (let pile of cleanPile) {
-    if (cleanPileObj[pile]) {
-      cleanPileObj[pile]++;
-      if (cleanPileObj[pile] === 2) {
+  for (let sock of cleanPile) {
+    // check for clean piles of socks in the clean  pile object
+    // if it finds a clean pile of sock, add it to the object
+    // and it was already there increment the number of pairs i.e the number of occurence
+    if (cleanPileObj[sock]) {
+      cleanPileObj[sock]++;
+      // if the clean pile of socks is there and its occurence is equal to two (2) that means we have a clean pair of socks
+      if (cleanPileObj[sock] === 2) {
+        // increment the number of clean pairs variable to keep count of how many clean pairs we have yet or encountered
         numberOfCleanPairs++;
-        cleanPileObj[pile] = 0;
+        // then we need to remove the clean pair of socks from the clean pile object by setting the occurence to zero;
+        cleanPileObj[sock] = 0;
       }
+      // if the clean pile of socks is not in the object, add it to the object
     } else {
-      cleanPileObj[pile] = 1;
+      cleanPileObj[sock] = 1;
     }
   }
 
-  for (let pile of cleanPile) {
-    if (cleanPileObj[pile] === 0) delete cleanPileObj[pile];
+  for (let sock of cleanPile) {
+    if (cleanPileObj[sock] === 0) delete cleanPileObj[sock];
+    cleanPileObj[sock];
   }
-  for (let pile of dirtyPile) {
-    if (dirtyPileObj[pile]) {
-      dirtyPileObj[pile]++;
-    } else dirtyPileObj[pile] = 1;
+  for (let sock of dirtyPile) {
+    if (dirtyPileObj[sock]) {
+      dirtyPileObj[sock]++;
+    } else dirtyPileObj[sock] = 1;
   }
 
   let washed = false;
@@ -69,6 +79,7 @@ function getMaxPairs(noOfWashes, cleanPile, dirtyPile) {
 
   return numberOfCleanPairs;
 }
+
 
 
 
